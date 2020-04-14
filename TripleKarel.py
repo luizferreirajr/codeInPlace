@@ -11,21 +11,24 @@ Triple sample worlds supplied in the starter folder.
 """
 
 
+# Paint all the buildings
 def main():
-    paint_building()
-    turn_right()
-    paint_building()
-    turn_right()
-    paint_building()
-    """
-    You should write your code to make Karel do its task in
-    this function. Make sure to delete the 'pass' line before
-    starting to write your own code. You should also delete this
-    comment and replace it with a better, more descriptive one.
-    """
+    paint_buildings()
 
 
-def paint_building():
+# Paint the buildings around, using the left side test
+# Turning right to be in position to go to another building
+def paint_buildings():
+    paint_building_around()
+    turn_right()
+    paint_building_around()
+    turn_right()
+    paint_building_around()
+
+
+# Paint the buildings around, using the left side test
+# Turning Karel without painting the corners
+def paint_building_around():
     paint()
     turn_karel_corner()
     paint()
@@ -33,17 +36,21 @@ def paint_building():
     paint()
 
 
+# Checking if the left side has a wall to be able to paint
+# Moving to the next square
 def paint():
     while left_is_blocked():
         put_beeper()
         move()
 
 
+# Turning Karel to go to another wall
 def turn_karel_corner():
     turn_left()
     move()
 
 
+# Turning Karel around 180 degrees
 def turn_right():
     turn_left()
     turn_left()
