@@ -19,20 +19,18 @@ def main():
 # Paint the buildings around, using the left side test
 # Turning right to be in position to go to another building
 def paint_buildings():
-    paint_building_around()
-    turn_right()
-    paint_building_around()
-    turn_right()
+    for i in range(2):
+        paint_building_around()
+        turn_right()
     paint_building_around()
 
 
 # Paint the buildings around, using the left side test
 # Turning Karel without painting the corners
 def paint_building_around():
-    paint()
-    turn_karel_corner()
-    paint()
-    turn_karel_corner()
+    for i in range(2):
+        paint()
+        turn_karel_corner()
     paint()
 
 
@@ -52,9 +50,8 @@ def turn_karel_corner():
 
 # Turning Karel around 180 degrees
 def turn_right():
-    turn_left()
-    turn_left()
-    turn_left()
+    for i in range(3):
+        turn_left()
 
 
 # There is no need to edit code beyond this point

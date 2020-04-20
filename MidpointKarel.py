@@ -12,29 +12,45 @@ stops.  The world may be of any size, but you are allowed to
 assume that it is at least as tall as it is wide.
 """
 
+
 # Check if the front is blocked because the first World 1x1
+# After the first validation she will starts sow beepers to keep her track
+# Then Karel will turn around to start the harvest of beepers, checking the edges to control her position
+# The harvest_beepers method is responsible for positioning Karel with a beeper in the middle of any map
 def main():
     if front_is_blocked():
         put_beeper()
     else:
-        add_beepers()
-        second_step()
+        sow_beepers()
+        go_back()
+        harvest_beepers()
 
 
-# Add the first line of beepers to check
-def add_beepers():
+# Add the first line of beepers to check, I call that "Sow beepers"
+def sow_beepers():
     move()
     while front_is_clear():
         put_beeper()
         move()
+
+
+# When Karel face a wall she will go back to start the harvest
+def go_back():
     turn_around()
     move()
 
 
 # Check the edges and, at the end add the final beeper to conclude the exercise
-def second_step():
+# I call that "harvest beepers"
+def harvest_beepers():
     while beepers_present():
         move()
+    clean_edges()
+
+
+# clean all the edges that have at least one beeper
+# at the end, if Karel cannot find a beeper, she needs to place one.
+def clean_edges():
     while no_beepers_present():
         check_edges()
         if beepers_present():
@@ -60,15 +76,15 @@ def catch_beepers():
 
 # Turn Karel around
 def turn_around():
-    turn_left()
-    turn_left()
+    for i in range(2):
+        turn_left()
 
 
 # Turn Karel 180 degrees
 def turn_right():
-    turn_left()
-    turn_left()
-    turn_left()
+    for i in range(3):
+        turn_left()
+
 
 # There is no need to edit code beyond this point
 
