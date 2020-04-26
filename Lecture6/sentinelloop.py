@@ -14,7 +14,7 @@ def main():
     # The while loop is responsible for compare the variable number with de constant SENTINEL
     # post condition: The program needs to keep making the same question until the user types the SENTINEL value.
     while number != SENTINEL:
-        total = total + number
+        total += number
         number = int(input('Type a number: '))
     print('The total is ' + str(total))
 
