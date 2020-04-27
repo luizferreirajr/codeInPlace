@@ -1,14 +1,19 @@
 """
 File: nimm.py
 -------------------------
-Add your comments here.
+This game is based in the ancient game of Nimm, a game of strategy that is named after the old German word for "take."
+It is also called Tiouk Tiouk in West Africa and Tsynshidzi in China. Players alternate
+taking stones until there are zero left.
 """
 
 
 def main():
+    # Stones quantity starts at 20
     stones = 20
+    # I defined this variable to control the Player, it will be improve.
     player = 1
     print('There are ' + str(stones) + ' left.')
+    # While the stones quantity is bigger than 0 the game keeps going
     while stones > 0:
         answer = int(input('Player ' + str(player) + ' would you like to remove 1 or 2 stones?: '))
 
