@@ -15,8 +15,12 @@ def main():
 
     # Continue this process until n is equal to one.
     while num1 != 1:
+        # Variable used to count how many steps were needed to reach 1
+        steps = 0
+
         # I used this base variable to store the original value of num1 each loop.
         base = num1
+        steps = steps+1
 
         # If n is even, divide it by two.
         if (num1 % 2) == 0:
@@ -27,6 +31,7 @@ def main():
         elif (num1 % 2) != 0:
             num1 = int((num1 * 3) + 1)
             print(str(base) + ' is odd, so I make 3n + 1: ' + str(num1))
+    print('The process took ' + str(steps) + ' steps to reach 1.')
 
 
 # This provided line is required at the end of a Python file
