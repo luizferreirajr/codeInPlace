@@ -1,7 +1,7 @@
 """
 File: examplefor.py
 ------------------
-Print the first 100 even numbers
+io program solution
 """
 import math
 
