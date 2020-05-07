@@ -18,10 +18,7 @@ def main():
 
     # Apply the filter
     # The pixel.color will receive himself times the value necessary to do the CodeInPlace filter.
-    for pixel in image:
-        pixel.red *= 1.5
-        pixel.green *= 0.7
-        pixel.blue *= 1.5
+    codeinplace_filter(image)
 
     # Show the image after the transform
     image.show()
@@ -33,6 +30,13 @@ def get_file():
     if filename == '':
         filename = DEFAULT_FILE
     return filename
+
+
+def codeinplace_filter(image):
+    for pixel in image:
+        pixel.red *= 1.5
+        pixel.green *= 0.7
+        pixel.blue *= 1.5
 
 
 if __name__ == '__main__':
