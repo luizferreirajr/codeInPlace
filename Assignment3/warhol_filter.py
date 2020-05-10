@@ -29,6 +29,10 @@ def make_recolored_patch(red_scale, green_scale, blue_scale):
     '''
     patch = SimpleImage(PATCH_NAME)
     # TODO: your code here.
+    for pixel in patch:
+        patch.red *= red_scale
+        patch.green *= green_scale
+        patch.blue *= blue_scale
     return patch
 
 if __name__ == '__main__':
