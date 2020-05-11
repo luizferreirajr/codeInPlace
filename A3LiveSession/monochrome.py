@@ -14,12 +14,12 @@ def main():
     less than 128
     """
     # load image
-    image = SimpleImage('images/joker.jpg')
+    image = SimpleImage('images/girl.jpeg')
     # TODO: apply monochrome filter
     for pixel in image:
-        average = (pixel.red + pixel.green + pixel.blue) // 3
+
         # See if this pixel is "sufficiently" black
-        if average < 128:
+        if should_be_black(pixel):
             pixel.red = 0
             pixel.green = 0
             pixel.blue = 0
@@ -29,6 +29,14 @@ def main():
             pixel.blue = 255
 
     image.show()
+
+
+def average(px):
+    return (px.red + px.green + px.blue) // 3
+
+
+def should_be_black(px):
+    return average(px) < DARK_THRESHOLD
 
 
 if __name__ == '__main__':
