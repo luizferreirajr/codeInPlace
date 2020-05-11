@@ -11,12 +11,14 @@ WIDTH = N_COLS * PATCH_SIZE
 HEIGHT = N_ROWS * PATCH_SIZE
 PATCH_NAME = 'images/simba-sq.jpg'
 
+
 def main():
     final_image = SimpleImage.blank(WIDTH, HEIGHT)
     # TODO: your code here.
     # This is an example which should generate a pinkish patch
     patch = make_recolored_patch(1.5, 0, 1.5)
     final_image.show()
+
 
 def make_recolored_patch(red_scale, green_scale, blue_scale):
     '''
@@ -34,6 +36,7 @@ def make_recolored_patch(red_scale, green_scale, blue_scale):
         patch.green *= green_scale
         patch.blue *= blue_scale
     return patch
+
 
 if __name__ == '__main__':
     main()
