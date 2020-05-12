@@ -17,6 +17,16 @@ def main():
     # TODO: your code here.
     # This is an example which should generate a pinkish patch
     patch = make_recolored_patch(1.5, 0, 1.5)
+
+    # I used this for loop to copy the x,y pixel and move him to the next column (PATCH_SIZE + 1)
+    for y in range(patch.height):
+        for x in range(patch.width):
+            pixel_to_copy = patch.get_pixel(x, y)
+
+            final_image.set_pixel(x, y, pixel_to_copy)
+            final_image.set_pixel(x + ((N_COLS - 2) * PATCH_SIZE), y, pixel_to_copy)
+            final_image.set_pixel(x + ((N_COLS - 1) * PATCH_SIZE), y, pixel_to_copy)
+
     final_image.show()
 
 
@@ -32,9 +42,9 @@ def make_recolored_patch(red_scale, green_scale, blue_scale):
     patch = SimpleImage(PATCH_NAME)
     # TODO: your code here.
     for pixel in patch:
-        patch.red *= red_scale
-        patch.green *= green_scale
-        patch.blue *= blue_scale
+        pixel.red *= red_scale
+        pixel.green *= green_scale
+        pixel.blue *= blue_scale
     return patch
 
 
