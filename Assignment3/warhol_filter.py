@@ -1,7 +1,7 @@
 """
 This program generates the Warhol effect based on the original image.
 """
-
+import random
 from simpleimage import SimpleImage
 
 N_ROWS = 2
@@ -14,18 +14,25 @@ PATCH_NAME = 'images/simba-sq.jpg'
 
 def main():
     final_image = SimpleImage.blank(WIDTH, HEIGHT)
-    # TODO: your code here.
     # This is an example which should generate a pinkish patch
-    patch = make_recolored_patch(1.5, 0, 1.5)
+    # patch = make_recolored_patch(random.uniform(0.0, 2.0), random.uniform(0.0, 2.0), random.uniform(0.0, 2.0))
 
-    # I used this for loop to copy the x,y pixel and move him to the next column (PATCH_SIZE + 1)
-    for y in range(patch.height):
-        for x in range(patch.width):
-            pixel_to_copy = patch.get_pixel(x, y)
+    # The first for loop will run trough the cols and rows
+    for col in range(N_COLS):
+        for row in range(N_ROWS):
+            # The make_recolored_patch inside this for loop will automatically generate awesome colors (sometimes)
+            patch = make_recolored_patch(random.uniform(0.0, 2.0), random.uniform(0.0, 2.0),
+                                         random.uniform(0.0, 2.0))
 
-            final_image.set_pixel(x, y, pixel_to_copy)
-            final_image.set_pixel(x + ((N_COLS - 2) * PATCH_SIZE), y, pixel_to_copy)
-            final_image.set_pixel(x + ((N_COLS - 1) * PATCH_SIZE), y, pixel_to_copy)
+            # The second for loop will run trough the x, y inside each patch
+            for y in range(PATCH_SIZE):
+                for x in range(PATCH_SIZE):
+
+                    pixel_to_copy = patch.get_pixel(x, y)
+
+                    # Creating the first row
+                    for i in range(N_ROWS):
+                        final_image.set_pixel(x + col * PATCH_SIZE, y + row * PATCH_SIZE, pixel_to_copy)
 
     final_image.show()
 
@@ -40,7 +47,7 @@ def make_recolored_patch(red_scale, green_scale, blue_scale):
     :return: the newly generated patch
     '''
     patch = SimpleImage(PATCH_NAME)
-    # TODO: your code here.
+    # Adding the scale for each pixel
     for pixel in patch:
         pixel.red *= red_scale
         pixel.green *= green_scale
