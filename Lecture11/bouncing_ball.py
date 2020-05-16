@@ -22,6 +22,7 @@ def main():
     ball = canvas.create_oval(0, 0, BALL_SIZE, BALL_SIZE, fill='blue', outline='blue')
     while True:
         # update world
+        canvas.move(ball, 3, 3)
         canvas.update()
 
         # pause
