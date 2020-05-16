@@ -10,7 +10,7 @@ import time
 import random
 import math
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
 
 CANVAS_WIDTH = 600      # Width of drawing canvas in pixels
 CANVAS_HEIGHT = 600     # Height of drawing canvas in pixels
